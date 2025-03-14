@@ -9,6 +9,10 @@ struct s_tree
 	s_tree	*right;
 };
 
+s_tree	*set_equation_in_tree(char *equation)
+{
+	
+}
 
 void	binary_tree_calculator()
 {
