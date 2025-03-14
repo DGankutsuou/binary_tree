@@ -9,14 +9,12 @@ struct s_tree
 	s_tree	*right;
 };
 
-/*
-s_tree	*set_equation_in_tree(char *equation)
+s_tree	*set_equation_in_tree(string *equation)
 {
 	s_tree	*equation;
 
 
 }
-*/
 
 int	binary_tree_calculator(s_tree *equation)
 {
@@ -35,18 +33,12 @@ int	binary_tree_calculator(s_tree *equation)
 int	main(void)
 {
 	s_tree	*equation;
+	string	line;
 
-	equation = new s_tree;
-	equation->op = '+';
-	equation->left = new s_tree;
-	equation->left->op = '*';
-	equation->left->left = new s_tree;
-	equation->left->left->value = 5;
-	equation->left->right = new s_tree;
-	equation->left->right->value = 3;
-	equation->right = new s_tree;
-	equation->right->value = 2;
+	cout << "Enter the equation:\n-> ";
+	cin >> line;
 	// 2 + 5 * 3
+	equation = set_equation_in_tree(line.)
 	cout << binary_tree_calculator(equation) << endl;
 	return (0);
 }
