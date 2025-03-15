@@ -29,11 +29,11 @@ vector <string>	spliter(string str, string delim)
 	return (words);
 }
 
-s_tree	*set_equation_in_tree(vector <string> equation)
+s_tree	*set_equation_in_tree(string equation)
 {
-	s_tree	*equation;
+	vector <string>	splited;
 
-
+	splited = spliter(equation, " ");
 }
 
 int	binary_tree_calculator(s_tree *equation)
@@ -64,3 +64,4 @@ int	main(void)
 	cout << binary_tree_calculator(tree) << endl;
 	return (0);
 }
+// to completed someday
