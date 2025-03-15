@@ -1,4 +1,6 @@
 #include <iostream>
+#include <string>
+#include <vector>
 using namespace std;
 
 struct s_tree
@@ -9,7 +11,25 @@ struct s_tree
 	s_tree	*right;
 };
 
-s_tree	*set_equation_in_tree(string *equation)
+vector <string>	spliter(string str, string delim)
+{
+	string	word;
+	short	pos;
+	vector <string> words;
+
+	while ((pos = str.find(delim)) != string::npos)
+	{
+		word = str.substr(0, pos);
+		if (word != "")
+			words.push_back(word);
+		str.erase(0, pos + delim.length());
+	}
+	if (str != "")
+		words.push_back(str);
+	return (words);
+}
+
+s_tree	*set_equation_in_tree(vector <string> equation)
 {
 	s_tree	*equation;
 
@@ -32,13 +52,15 @@ int	binary_tree_calculator(s_tree *equation)
 
 int	main(void)
 {
-	s_tree	*equation;
-	string	line;
+	s_tree			*tree;
+	string			equation;
+	vector <string>	splited;
 
 	cout << "Enter the equation:\n-> ";
-	cin >> line;
+	cin >> equation;
 	// 2 + 5 * 3
-	equation = set_equation_in_tree(line.)
-	cout << binary_tree_calculator(equation) << endl;
+	splited = spliter(equation, " ");
+	tree = set_equation_in_tree(splited);
+	cout << binary_tree_calculator(tree) << endl;
 	return (0);
 }
