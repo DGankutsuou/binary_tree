@@ -11,6 +11,12 @@ struct s_tree
 	s_tree	*right;
 };
 
+struct s_halfs
+{
+	string left_half;
+	string right_half;
+};
+
 vector <string>	spliter(string str, string delim)
 {
 	string	word;
@@ -29,11 +35,33 @@ vector <string>	spliter(string str, string delim)
 	return (words);
 }
 
-s_tree	*set_equation_in_tree(string equation)
+s_halfs	divide_equation(string equation)
 {
+	s_halfs 		halfs;
 	vector <string>	splited;
+	int				idx = 0;
 
 	splited = spliter(equation, " ");
+	for (string &iter : splited)
+	{
+		if (iter == "+" || iter == "-")
+		{
+
+		}
+		idx++;
+	}
+}
+
+s_tree	*set_equation_in_tree(string equation)
+{
+	s_tree *tree;
+	s_halfs halfs;
+
+	tree = new s_tree;
+	halfs = divide_equation(equation);
+	tree->left = set_equation_in_tree(halfs.left_half);
+	tree->right = set_equation_in_tree(halfs.right_half);
+	return (tree);
 }
 
 int	binary_tree_calculator(s_tree *equation)
@@ -60,7 +88,7 @@ int	main(void)
 	cin >> equation;
 	// 2 + 5 * 3
 	splited = spliter(equation, " ");
-	tree = set_equation_in_tree(splited);
+	tree = set_equation_in_tree(equation);
 	cout << binary_tree_calculator(tree) << endl;
 	return (0);
 }
